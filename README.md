@@ -74,5 +74,7 @@ Overall, the LLM-based augmentation clearly outperformed the non-LLM approach, a
 The learning curves clearly show that models trained on larger data subsets reach lower and more stable validation loss. The 25% model, in particular, converged rapidly and had the flattest curve, suggesting efficient learning. 
 However, visual extrapolation of the loss curves also suggests that the model gains diminish gradually after 10%, supporting the assumption of diminishing returns on additional data past a certain point.
 <img src="https://github.com/user-attachments/assets/598acdde-ae50-4603-88f4-b2d975009687" width="600"/>
+<img src="https://github.com/user-attachments/assets/c1256529-47e1-463b-a521-f4fdd07d53de" width="600"/>
+
 
 
