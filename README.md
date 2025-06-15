@@ -66,3 +66,11 @@ Overall, the LLM-based augmentation clearly outperformed the non-LLM approach, a
 - Using an LLM for zero-shot learning, we observed that the model's performance varied significantly across different classification topics. In some cases, it performed very well, accurately identifying topics and achieving high recall. However, in other cases, the performance was poor. This inconsistency suggests that the model struggles to generalize uniformly across all topics. As a result, the overall metrics reflect this variability: 0.37 accuracy, 0.55 precision, and 0.37 recall. The model struggled to consistently identify the correct topic.
  
 <img src="https://github.com/user-attachments/assets/092a0126-d232-40e3-adf5-f3e655207781" width="400"/>
+
+
+
+Learning curves were analyzed using dataset splits of [1%, 5%, 10%, 25%]. While technical issues prevented retrieval of some training logs (especially for 10% and 25%), we preserved performance metrics (accuracy, precision, recall) and plotted the available validation losses over epochs.
+The learning curves clearly show that models trained on larger data subsets reach lower and more stable validation loss. The 25% model, in particular, converged rapidly and had the flattest curve, suggesting efficient learning. 
+However, visual extrapolation of the loss curves also suggests that the model gains diminish gradually after 10%, supporting the assumption of diminishing returns on additional data past a certain point.
+![image](https://github.com/user-attachments/assets/598acdde-ae50-4603-88f4-b2d975009687)
+
