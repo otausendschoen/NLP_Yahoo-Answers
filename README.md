@@ -47,7 +47,7 @@ This repository contains the full pipeline for an NLP classification project aim
 
 ---
 
-## Exectutive Summary:
+# Exectutive Summary:
 **Purpose and Scope **
 This project explores strategies to enhance text classification performance in low-resource scenarios, where labeled data is limited. The goal is to develop a robust NLP pipeline by combining rule-based methods with large language model (LLM) techniques. The scope includes benchmarking BERT-based models under few-shot settings, testing synthetic data augmentation using LLaMA, and implementing zero-shot and semi-supervised learning approaches.
 We used the Random Classifier as a bottom benchmark, where we obtained 0.1002 in the accuracy metrics.
