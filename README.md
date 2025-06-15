@@ -73,6 +73,6 @@ Overall, the LLM-based augmentation clearly outperformed the non-LLM approach, a
 - Learning curves were analyzed using dataset splits of [1%, 5%, 10%, 25%]. While technical issues prevented retrieval of some training logs (especially for 10% and 25%), we preserved performance metrics (accuracy, precision, recall) and plotted the available validation losses over epochs.
 The learning curves clearly show that models trained on larger data subsets reach lower and more stable validation loss. The 25% model, in particular, converged rapidly and had the flattest curve, suggesting efficient learning. 
 However, visual extrapolation of the loss curves also suggests that the model gains diminish gradually after 10%, supporting the assumption of diminishing returns on additional data past a certain point.
-<img src="https://github.com/user-attachments/assets/598acdde-ae50-4603-88f4-b2d975009687" width="400"/>
+<img src="https://github.com/user-attachments/assets/598acdde-ae50-4603-88f4-b2d975009687" width="600"/>
 
 
