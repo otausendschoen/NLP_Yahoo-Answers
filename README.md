@@ -32,13 +32,19 @@ This repository contains the full pipeline for an NLP classification project aim
 
 
 
-## Getting Started
 
-```bash
-git clone https://github.com/yourusername/few-shot-llama-classifier.git
-cd few-shot-llama-classifier
-pip install -r requirements.txt
-```
+---
+
+## Repository Structure
+
+| File | Description |
+|------|-------------|
+| `Part_1-2.ipynb` | Part 1 and 2
+| `Part_3_A-B.ipynb` | First Half of Part 3, includes Task A & B
+| `Part_4.ipynb` | Part 4
+| `.csv` files |?
+
+---
 
 ## Exectutive Summary:
 **Purpose and Scope **
