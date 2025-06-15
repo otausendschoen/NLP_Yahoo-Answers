@@ -23,6 +23,8 @@ This repository contains the full pipeline for an NLP classification project aim
 ### 3. Full Dataset Training
 - Learning curve across [1%, 10%, 25%, 50%, 75%, 100%] dataset splits
 - Evaluation of hybrid training strategies combining synthetic + real data
+- Part A and B are in notebook "Part3_AB.ipynb" which was run on Kaggle in Kaggle for computational requirements.
+- Part C and D are in notebook "Part3_CD.ipynb" which was executed on Google Colab using T4 GPUs.
 
 ### 4. Model Optimization
 - Distillation and quantization of the best BERT model
