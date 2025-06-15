@@ -49,7 +49,9 @@ This repository contains the full pipeline for an NLP classification project aim
 ---
 
 # Exectutive Summary:
-**Purpose and Scope **
+
+**Purpose and Scope**
+
 This project explores strategies to enhance text classification performance in low-resource scenarios, where labeled data is limited. The goal is to develop a robust NLP pipeline by combining rule-based methods with large language model (LLM) techniques. The scope includes benchmarking BERT-based models under few-shot settings, testing synthetic data augmentation using LLaMA, and implementing zero-shot and semi-supervised learning approaches.
 We used the Random Classifier as a bottom benchmark, where we obtained 0.1002 in the accuracy metrics.
 
@@ -78,4 +80,10 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 <img src="https://github.com/user-attachments/assets/c1256529-47e1-463b-a521-f4fdd07d53de" width="600"/>
 
 
+- When doing distillation and quantization to optimize the best-performing BERT model, we observed substantial gains in inference speed while preserving most of the classification performance. In particular, our student_v1 model, which was trained using soft targets from the teacher (knowledge distillation), achieved an accuracy of 0.8272, compared to the teacher's 0.8744, while reducing inference time by over 50% (from about 0.70s to about 0.34s on 100 samples). This demonstrates that distilled models can retain much of the teacher’s performance with significantly lower computational costs, making them suitable for deployment in resource-constrained environments.
 
+- In contrast, simpler student variants that were not trained with soft labels performed far worse (e.g., accuracy ~0.66), indicating that the inclusion of teacher guidance via soft probabilities is crucial for effective distillation. Moreover, our student_v1_quantized model showed nearly identical performance to the unquantized version, while maintaining efficient runtime, suggesting quantization can further compress the model without compromising quality.
+
+- A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model. However, noticeable drops were observed in a few classes, particularly class 3 and class 6, suggesting some difficulty in generalizing to more ambiguous or context-dependent categories. This highlights the inherent trade-offs of model compression: while distillation preserves overall performance, it can reduce robustness in edge cases. Future work could explore targeted fine-tuning or curriculum learning to close the gap on these harder classes.
+
+- In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
