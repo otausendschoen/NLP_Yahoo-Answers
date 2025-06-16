@@ -87,7 +87,7 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 - A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model. However, noticeable drops were observed in a few classes, particularly class 3 and class 6, suggesting some difficulty in generalizing to more ambiguous or context-dependent categories. This highlights the inherent trade-offs of model compression: while distillation preserves overall performance, it can reduce robustness in edge cases. Future work could explore targeted fine-tuning or curriculum learning to close the gap on these harder classes.
 
 - In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
-- 
+  
 **General Summary of Models**
 | Part      | Model / Method                                      | Accuracy (%) |
 |-----------|-----------------------------------------------------|--------------|
@@ -107,7 +107,7 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | BERT on 25% of data                                  | 68.3         |
 |           | + 1-Mask Aug. (5% data)                              | 68.0         |
 |           | + 3-Mask Aug. (5% data)                              | 67.0         |
-| **Part 4** | Teacher Model (Fine-tuned BERT)                     | 87.4         |
+| **Part 4** | Teacher Model (Fine-tuned BERT on 5%)               | 87.4         |
 |           | Student (Pre-trained only)                           | 66.5         |
 |           | Student (Intermediate Distilled)                     | 66.8         |
 |           | Student v1 (Distilled from Teacher)                  | 82.7         |
