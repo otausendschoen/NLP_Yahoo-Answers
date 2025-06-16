@@ -87,3 +87,29 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 - A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model. However, noticeable drops were observed in a few classes, particularly class 3 and class 6, suggesting some difficulty in generalizing to more ambiguous or context-dependent categories. This highlights the inherent trade-offs of model compression: while distillation preserves overall performance, it can reduce robustness in edge cases. Future work could explore targeted fine-tuning or curriculum learning to close the gap on these harder classes.
 
 - In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
+- 
+**General Summary of Models**
+| Part      | Model / Method                                      | Accuracy (%) |
+|-----------|-----------------------------------------------------|--------------|
+| **Part 1** | Random Classifier                                   | 9.99         |
+|           | Baseline Implementation                              | 21.25        |
+| **Part 2** | 32-shot BERT 1.0 (no class balancing)               | 13.1         |
+|           | 32-shot BERT 2.0 (class balancing)                   | 13.6         |
+|           | + 1-Masked Token Augmentation                        | 11.1         |
+|           | + 3-Masked Token Augmentation                        | 14.4         |
+|           | Zero-shot LLM Classification                         | 25.7         |
+|           | LLM-Generated Data (5,000 examples)                  | 51.2         |
+|           | LLM-Generated Data (6,000 examples)                  | 50.0         |
+|           | LLM-Generated Data (10,000 examples)                 | 50.4         |
+| **Part 3** | BERT on 1% of data                                  | 63.6         |
+|           | BERT on 5% of data                                   | 67.5         |
+|           | BERT on 10% of data                                  | 67.2         |
+|           | BERT on 25% of data                                  | 68.3         |
+|           | + 1-Mask Aug. (5% data)                              | 68.0         |
+|           | + 3-Mask Aug. (5% data)                              | 67.0         |
+| **Part 4** | Teacher Model (Fine-tuned BERT)                     | 87.4         |
+|           | Student (Pre-trained only)                           | 66.5         |
+|           | Student (Intermediate Distilled)                     | 66.8         |
+|           | Student v1 (Distilled from Teacher)                  | 82.7         |
+|           | Quantized Classifier                                 | 82.7         |
+  
