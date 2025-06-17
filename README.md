@@ -67,7 +67,7 @@ Overall, the LLM-based augmentation clearly outperformed the non-LLM approach, a
 
 
 
-- Using an LLM for zero-shot learning, we observed that the model's performance varied significantly across different classification topics. In some cases, it performed very well, accurately identifying topics and achieving high recall. However, in other cases, the performance was poor. This inconsistency suggests that the model struggles to generalize uniformly across all topics. As a result, the overall metrics reflect this variability: 0.37 accuracy, 0.55 precision, and 0.37 recall. The model struggled to consistently identify the correct topic.
+- Using an LLM for zero-shot learning, we observed that the model's performance varied significantly across different classification topics. In some cases, it performed very well, accurately identifying topics and achieving high recall. However, in other cases, the performance was poor. This inconsistency suggests that the model struggles to generalize uniformly across all topics. As a result, the overall metrics reflect this variability: 0.257 accuracy, 0.44 precision, and 0.256 recall. The model struggled to consistently identify the correct topic.
  
 
 
@@ -98,9 +98,9 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | + 1-Masked Token Augmentation                        | 11.1         |
 |           | + 3-Masked Token Augmentation                        | 14.4         |
 |           | Zero-shot LLM Classification                         | 25.7         |
-|           | LLM-Generated Data (5,000 examples)                  | 51.2         |
-|           | LLM-Generated Data (6,000 examples)                  | 50.0         |
-|           | LLM-Generated Data (10,000 examples)                 | 50.4         |
+|           | LLM-Generated Data (5,000 examples)                  | 50.0         |
+|           | LLM-Generated Data (6,000 examples)                  | 50.7         |
+|           | LLM-Generated Data (10,000 examples)                 | 51.4         |
 | **Part 3** | BERT on 1% of data                                  | 63.6         |
 |           | BERT on 5% of data                                   | 67.5         |
 |           | BERT on 10% of data                                  | 67.2         |
