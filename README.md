@@ -100,7 +100,7 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | Zero-shot LLM Classification                         | 25.7         |
 |           | LLM-Generated Data (5,000 examples)                  | 50.0         |
 |           | LLM-Generated Data (6,000 examples)                  | 50.7         |
-|           | LLM-Generated Data (10,000 examples)                 | 51.4         |
+|           | LLM-Generated Data (10,000 examples)                 | 51.1         |
 | **Part 3** | BERT on 1% of data                                  | 63.6         |
 |           | BERT on 5% of data                                   | 67.5         |
 |           | BERT on 10% of data                                  | 67.2         |
