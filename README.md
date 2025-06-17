@@ -80,11 +80,11 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 <img src="https://github.com/user-attachments/assets/c1256529-47e1-463b-a521-f4fdd07d53de" width="600"/>
 
 
-- When doing distillation and quantization to optimize the best-performing BERT model, we observed substantial gains in inference speed while preserving most of the classification performance. In particular, our student_v1 model, which was trained using soft targets from the teacher (knowledge distillation), achieved an accuracy of 0.8272, compared to the teacher's 0.8744, while reducing inference time by over 50% (from about 0.70s to about 0.34s on 100 samples). This demonstrates that distilled models can retain much of the teacher’s performance with significantly lower computational costs, making them suitable for deployment in resource-constrained environments.
+- When doing distillation and quantization to compress the fine-tuned BERT model trained on 5% of the data, we observed substantial inference speedups while retaining much of the classification performance. Specifically, our quantized student model achieved 65.27% accuracy, closely matching its unquantized counterpart (65.15%), while cutting inference time in half (from ~0.70s to ~0.34s per 100 samples). This demonstrates that model compression via quantization can maintain effectiveness while improving deployability in low-resource environments.
 
-- In contrast, simpler student variants that were not trained with soft labels performed far worse (e.g., accuracy ~0.66), indicating that the inclusion of teacher guidance via soft probabilities is crucial for effective distillation. Moreover, our student_v1_quantized model showed nearly identical performance to the unquantized version, while maintaining efficient runtime, suggesting quantization can further compress the model without compromising quality.
-
-- A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model. However, noticeable drops were observed in a few classes, particularly class 3 and class 6, suggesting some difficulty in generalizing to more ambiguous or context-dependent categories. This highlights the inherent trade-offs of model compression: while distillation preserves overall performance, it can reduce robustness in edge cases. Future work could explore targeted fine-tuning or curriculum learning to close the gap on these harder classes.
+- Other distilled student variants showed competitive and similiar performance. The pretrained student model (standard knowledge distillation using soft labels) reached 66.5% accuracy, while the intermediate-distilled student (with TinyBERT-style hidden layer alignment) achieved 66.08%. However, the original teacher model still outperformed all distilled versions, with an accuracy of 66.28% on the same test split.
+- 
+- A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model.
 
 - In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
   
@@ -108,8 +108,8 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | + 1-Mask Aug. (5% data)                              | 68.0         |
 |           | + 3-Mask Aug. (5% data)                              | 67.0         |
 | **Part 4** | Teacher Model (Fine-tuned BERT on 5%)               | 66.28         |
-|           | Student (Pre-trained only)                           | 66.09         |
-|           | Student (Intermediate Distilled)                     | 65.15         |
-|           | Student v1 (Distilled from Teacher)                  | 66.51         |
+|           | Student (Pre-trained only)                           | 66.5         |
+|           | Student (Intermediate Distilled)                     | 66.08         |
+|           | Student v1 (Distilled from Teacher)                  | 65.15         |
 |           | Quantized Classifier                                 | 65.27         |
   
