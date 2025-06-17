@@ -83,7 +83,7 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 - When doing distillation and quantization to compress the fine-tuned BERT model trained on 5% of the data, we observed substantial inference speedups while retaining much of the classification performance. Specifically, our quantized student model achieved 65.27% accuracy, closely matching its unquantized counterpart (65.15%), while cutting inference time in half (from ~0.70s to ~0.34s per 100 samples). This demonstrates that model compression via quantization can maintain effectiveness while improving deployability in low-resource environments.
 
 - Other distilled student variants showed competitive and similiar performance. The pretrained student model (standard knowledge distillation using soft labels) reached 66.5% accuracy, while the intermediate-distilled student (with TinyBERT-style hidden layer alignment) achieved 66.08%. However, the original teacher model still outperformed all distilled versions, with an accuracy of 66.28% on the same test split.
-- 
+
 - A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model.
 
 - In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
