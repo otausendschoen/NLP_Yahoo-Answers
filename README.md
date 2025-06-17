@@ -105,8 +105,8 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | BERT on 5% of data                                   | 67.5         |
 |           | BERT on 10% of data                                  | 67.2         |
 |           | BERT on 25% of data                                  | 68.3         |
-|           | + 1-Mask Aug. (5% data)                              | 68.0         |
-|           | + 3-Mask Aug. (5% data)                              | 67.0         |
+|           | + 1-Mask Aug. (5% data)                              | 67.2         |
+|           | + 3-Mask Aug. (5% data)                              | 66.9         |
 | **Part 4** | Teacher Model (Fine-tuned BERT on 5%)               | 66.28         |
 |           | Student (Pre-trained only)                           | 66.5         |
 |           | Student (Intermediate Distilled)                     | 66.08         |
