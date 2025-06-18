@@ -44,7 +44,8 @@ This repository contains the full pipeline for an NLP classification project aim
 | `Part3_CD.ipynb` | Second Half of Part 3, includes Task C & D
 | `Part_4.ipynb` | Part 4
 | `questions_dataset.csv`  | The syhnthetic dataset with the questions generated with llama3.2
-| `ZeroShotClassification.csv`  |The dataset with the questions classified with the llama3.2 (ZeroShot
+| `ZeroShotClassification.csv`  |The dataset with the questions classified with the llama3.2 (ZeroShot)
+| `training_content_title.ipynb`  |This includes complementary training on 5% and 20% dataset using both content and title as features
 
 ---
 
