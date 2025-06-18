@@ -80,14 +80,16 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 <img src="https://github.com/user-attachments/assets/c1256529-47e1-463b-a521-f4fdd07d53de" width="600"/>
 
 
-- When doing distillation and quantization to compress the fine-tuned BERT model trained on 5% of the data, we observed substantial inference speedups while retaining much of the classification performance. For example, our quantized student model achieved 65.27% accuracy, while cutting inference time in half (from ~0.70s to ~0.3s per 100 samples). This demonstrates that model compression via quantization can maintain effectiveness while improving deployability in low-resource environments.
+- When applying distillation and quantization to compress the fine-tuned BERT model trained on a reduced 5% subset of the dataset, we were able to retain most of the classification performance while significantly reducing model size and improving inference efficiency, particularly in CPU-constrained environments.
 
-- Other distilled student variants showed competitive and similiar performance. The pretrained student model (standard knowledge distillation using soft labels) reached 66.5% accuracy, while the intermediate-distilled student (with TinyBERT-style hidden layer alignment) achieved 66.08%. However, the original teacher model still outperformed all distilled versions, with an accuracy of 66.28% on the same test split.
+- The best student model, which uses intermediate layer distillation (with TinyBERT-style hidden state alignment), slightly outperformed the teacher, achieving an accuracy of **66.54%** compared to the teacher’s **66.28%**. This result demonstrates that carefully guided student training can even surpass the teacher in terms of generalization, despite the student’s smaller capacity. The standard distilled student, using only soft targets, reached **65.27%**, showing competitive performance with a simpler objective.
 
-- A per-class accuracy analysis revealed that the student retained strong performance across nearly all topics, closely mirroring the teacher model.
+- Quantization was applied post-training using ONNX Runtime, reducing the weight precision from 32-bit floats to 8-bit integers. While this did not improve inference speed on GPU, due to overheads and partial operator support, it did significantly reduce latency on CPU. Inference time on 100 samples dropped from around **10.8 seconds for the teacher** to just **2.5 seconds for the quantized student ONNX model**, demonstrating its practicality for edge deployment.
 
-- In summary, distillation is a highly effective compression method in our pipeline, achieving fast, accurate, and lightweight models. However, careful attention must be given to the training strategy (e.g., use of soft labels), and further improvements could involve layer-sharing, intermediate feature alignment, or selective knowledge transfer to better match teacher predictions on complex samples.
-  
+- A per-class accuracy comparison confirmed that the intermediate student preserved performance across nearly all categories, showing particular robustness in classes such as *Society & Culture* and *Family & Relationships*. The confusion matrix revealed a strong alignment with the teacher’s predictions, though minor deviations still existed in more ambiguous classes.
+
+- In summary, model distillation proved highly effective for compressing and accelerating the BERT-based classifier without sacrificing accuracy. The inclusion of intermediate feature alignment clearly improved performance beyond standard soft-label distillation. Further improvements could include combining this strategy with quantization-aware training or mixed-precision optimization to enable faster inference on both GPU and CPU, as well as investigating hybrid architectures with adaptive depth or selective layer reuse from the teacher.
+
 **General Summary of Models**
 | Part      | Model / Method                                      | Accuracy (%) |
 |-----------|-----------------------------------------------------|--------------|
@@ -108,8 +110,8 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | + 1-Mask Aug. (5% data)                              | 67.2         |
 |           | + 3-Mask Aug. (5% data)                              | 66.9         |
 | **Part 4** | Teacher Model (Fine-tuned BERT on 5%)               | 66.28         |
-|           | Student (Pre-trained only)                           | 66.5         |
-|           | Student (Intermediate Distilled)                     | 66.08         |
-|           | Student v1 (Distilled from Teacher)                  | 65.15         |
-|           | Quantized Classifier                                 | 65.27         |
+|           | Student (Intermediate Distilled)                     | 66.54         |
+|           | Student (Pre-trained only)                           | 65.27         |
+|           | Quantized Student (ONNX)                             | 65.19         |
+
   
