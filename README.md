@@ -114,5 +114,4 @@ However, visual extrapolation of the loss curves also suggests that the model ga
 |           | Student (Intermediate Distilled)                     | 66.54         |
 |           | Student (Pre-trained only)                           | 65.27         |
 |           | Quantized Student (ONNX)                             | 65.19         |
-
-  
+---
